@@ -14,6 +14,10 @@ Zenitsu-Bot-V2 Multi Device is a automated whatsapp bot developed by <a href="ht
 <a href="https://youtu.be/fVFn4fhz-F8"><img title="Size" src="https://img.shields.io/badge/Tutorial-Video-green"></a>
 </p>
 
+<p align="center">
+<a href="https://youtu.be/nCAHLkeuZmE"><img title="Size" src="https://img.shields.io/badge/Tutorial-Video2-green"></a>
+</p>
+
 
 # ```Bot Info```
 <p align="center">
@@ -105,7 +109,7 @@ apt install nodejs
 apt install git 
 apt apt install ffmpeg 
 apt apt install libwebp 
-apt apt install imagrmagick
+apt apt install imagemagick
 apt install bash
 git clone https://github.com/DGDEEPAK/Zenitsu-Bot2
 cd Zenitsu-Bot2
