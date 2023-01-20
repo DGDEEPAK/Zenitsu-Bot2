@@ -19,7 +19,7 @@ Zenitsu-Bot-V2 Multi Device is a automated whatsapp bot developed by <a href="ht
 <p align="center">
 <a href="https://github.com/DGDEEPAK/followers"><img title="Followers" src="https://img.shields.io/github/followers/DGDEEPAK?color=red&style=flat-square"></a>
 <a href="https://github.com/DGDEEPAK/Zenitsu-Bot2/stargazers/"><img title="Stars" src="https://img.shields.io/github/stars/DGDEEPAK/Zenitsu-Bot2?color=blue&style=flat-square"></a>
-<a href="https://github.com/DGDEEPAK/CheemsBo/network/members"><img title="Forks" src="https://img.shields.io/github/forks/DGDEEPAK/Zenitsu-Bot2?color=red&style=flat-square"></a>
+<a href="https://github.com/DGDEEPAK/Zenitsu-Bot2/network/members"><img title="Forks" src="https://img.shields.io/github/forks/DGDEEPAK/Zenitsu-Bot2?color=red&style=flat-square"></a>
 <a href="https://github.com/DGDEEPAK/Zenitsu-Bot2/watchers"><img title="Watching" src="https://img.shields.io/github/watchers/DGDEEPAK/Zenitsu-Bot2?label=Watchers&color=blue&style=flat-square"></a>
 <a href="https://github.com/DGDEEPAK/Zenitsu-Bot2"><img title="Open Source" src="https://img.shields.io/badge/Author-Deepak.-red?v=103"></a>
 <a href="https://github.com/DGDEEPAK/Zenitsu-Bot2/"><img title="Size" src="https://img.shields.io/github/repo-size/DGDEEPAK/Zenitsu-Bot2?style=flat-square&color=green"></a>
