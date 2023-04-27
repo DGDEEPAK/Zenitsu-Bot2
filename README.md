@@ -83,6 +83,8 @@ https://github.com/clhuang/heroku-buildpack-webp-binaries.git
 ```bash
 git clone https://github.com/DGDEEPAK/Zenitsu-Bot2.git
 cd Zenitsu-Bot2
+pkg install python
+yarn install
 
 node Nandita.js
 ```
@@ -99,8 +101,11 @@ pkg install ffmpeg -y
 pkg install wget
 pkg install yarn
 pkg install imagemagick -y
+pkg install python
 git clone https://github.com/DGDEEPAK/Zenitsu-Bot2
 cd Zenitsu-Bot2 
+npm install
+yarn install
 node Nandita.js
 ```
 ## `For VPS`
