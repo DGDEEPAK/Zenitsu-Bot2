@@ -3399,8 +3399,8 @@ let mentioned = participants.map(v => v.jid)
      await Deepak.groupSettingUpdate(m.chat, 'not_announcement').then((res) => replay(`Group has been opened!`)).catch((err) => replay(jsonformat(err)))
      } else {
      let buttons = [
-     { buttonId: '.group open', buttonText: { displayText: 'Open' }, type: 1 },
-     { buttonId: '.group close', buttonText: { displayText: 'Close' }, type: 1 }
+     { buttonId: '#group open', buttonText: { displayText: 'Open' }, type: 1 },
+     { buttonId: '#group close', buttonText: { displayText: 'Close' }, type: 1 }
      ]
      let buttonMessage = {
      image: BotLogo,
@@ -4963,7 +4963,7 @@ case 'crossplay': case 'crosplay': case 'cosplay':
     if (isBanChat) return reply(mess.bangc)
     if (!m.isGroup) return replay(mess.grouponly)
                 const buttons = [
-        {buttonId: '.crossplay', buttonText: {displayText: '>>'}, type: 1},
+        {buttonId: '#crossplay', buttonText: {displayText: '>>'}, type: 1},
             ]               
         const cosplybutton = {
         image: {url: 'https://hanzz-web.herokuapp.com/api/randomimage/cosplay'},
@@ -5576,12 +5576,12 @@ await sleep(1500)
 let btn = [{
 quickReplyButton: {
 displayText: '💡 Menu 💡',
-id: '.menu'
+id: '#menu'
 }  
 }, {
 quickReplyButton: {
 displayText: 'Bot Owner',
-id: '.owner'
+id: '#owner'
 }
 }]
 let txt = `「 *${global.OwnerName}'s Broadcast* 」\n\n${text}`
@@ -5589,655 +5589,731 @@ Deepak.send5ButImg(yoi, txt, `${global.BotName}`, BotLogo, btn, Thumb)
 }
 replay('Broadcast Sent !')
 }
-break    
-
-
-case 'help': case 'h': case 'menu': case 'allmenu': case 'listmenu':{
+break 
+case 'alive': case 'panel': case 'list': case 'menu': case 'help': case 'bot': {
     if (isBan) return reply(mess.banned)	 			
     if (isBanChat) return reply(mess.bangc)
 Deepak.sendMessage(from, { react: { text: "🐕" , key: m.key }})      
-const helpmenu = `Hi ${pushname}
-Zenitsu Bot With You Forever!! 🐶🤚
+const helpmenu = `
+*𝗭𝗘𝗡𝗜𝗧𝗦𝗨-𝗠𝗗 𝗠𝗘𝗡𝗨* 
+*Hi👋, ${pushname}, ${ucapanWaktu}️*
 
+╔═══❑𝗕𝗢𝗧-𝗜𝗡𝗙𝗢❑════❀
+║🪀️𝚅𝚎𝚛𝚜𝚒𝚘𝚗 : 3.2.9
+║🦄𝙿𝚛𝚎𝚏𝚒𝚡 : "#"
+║🚅𝚂𝚙𝚎𝚎𝚍 : ${latensie.toFixed(4)} miliseconds
+║⏰𝚁𝚞𝚗𝚝𝚒𝚖𝚎 : ${runtime(process.uptime())}
+║🤖𝙱𝚘𝚝 : ${global.BotName}
+║💬𝙾𝚠𝚗𝚎𝚛 : 🦄Dream Guy Deepak
+║💡𝙼𝚘𝚍𝚎 : Public
+║🖥️𝙷𝚘𝚜𝚝 𝙽𝚊𝚖𝚎 : localhost
+║📱𝙿𝚕𝚊𝚝𝚏𝚘𝚛𝚖 : android
+║👤𝚃𝚘𝚝𝚊𝚕 𝚄𝚜𝚎𝚛 : ${Object.keys(global.db.data.users).length}
+╚═════════════════❀  
+╔═══❑𝗨𝗦𝗘𝗥-𝗜𝗡𝗙𝗢❑════❀
+║🙇𝙽𝚊𝚖𝚎 : ${pushname}
+║📠𝙽𝚞𝚖𝚋𝚎𝚛 : @${me.split('@')[0]}
+╚══════════════❀
+╔═══❑𝗧𝗜𝗠𝗘-𝗜𝗡𝗙𝗢❑════❀
+║⌚𝚃𝚒𝚖𝚎 : ${deepaktime}
+║🗓️𝙳𝚊𝚝𝚎 : ${deepakdate} 
+╚═════════════════❀ 
+𝑴𝒂𝒅𝒆 𝑩𝒚 𝑫𝒓𝒆𝒂𝒎 𝑮𝒖𝒚 𝑫𝒆𝒆𝒑𝒂𝒌❤ `   
 
-ꪶ🐕 Zenitsu-Bot Info 🐕ꫂ
-➙Owner : 🦄Dream Guy Deepak
-➙User :  ${pushname}
-➙Prefix : [ ${prefix} ]
-➙Mode : Public
-➙Platform : Linux
-➙Speed : ${latensie.toFixed(4)} ms
-➙Runtime :  ${runtime(process.uptime())}
-➙Total Bot User : ${Object.keys(global.db.users).length}
-➙Bot Number: 919679744547
+       let buttonshelpm = [{ buttonId: '${prefix}allmenu', buttonText: { displayText: '🦄𝙰𝚕𝚕𝙼𝚎𝚗𝚞' }, type: 1 },{ buttonId: '${prefix}owner', buttonText: { displayText: '🦄𝙾𝚠𝚗𝚎𝚛' }, type: 1 }]
+                let buttonMessage = {
+                    image:fs.readFileSync("./Assets/Zenitsu.jpg"),
+                    caption: helpmenu,
+                    footer: `${BotName}`,
+                    buttons: buttonshelpm,
+                    headerType: 4
+                    
+                }
+            Deepak.sendMessage(m.chat, buttonMessage,{ quoted:m })
+                }
+break       
+case 'help': case 'h': case 'allmenu': case 'listmenu':{
+    if (isBan) return reply(mess.banned)	 			
+    if (isBanChat) return reply(mess.bangc)
+Deepak.sendMessage(from, { react: { text: "🐕" , key: m.key }})      
+const helpmenu = `
+*𝗭𝗘𝗡𝗜𝗧𝗦𝗨-𝗠𝗗 𝗠𝗘𝗡𝗨* 
+*Hi👋, ${pushname}, ${ucapanWaktu}️*
 
-ꪶ🐕Owner🐕ꫂ
-➙ ${prefix}private
-➙ ${prefix}public
-➙ ${prefix}join
-➙ ${prefix}bangroup
-➙ ${prefix}ban
-➙ ${prefix}block 
-➙ ${prefix}unblock
-➙ ${prefix}broadcast
-➙ ${prefix}bye
+╔═══❑𝗕𝗢𝗧-𝗜𝗡𝗙𝗢❑════❀
+║🪀️𝚅𝚎𝚛𝚜𝚒𝚘𝚗 : 3.2.9
+║🦄𝙿𝚛𝚎𝚏𝚒𝚡 : "#"
+║🚅𝚂𝚙𝚎𝚎𝚍 : ${latensie.toFixed(4)} miliseconds
+║⏰𝚁𝚞𝚗𝚝𝚒𝚖𝚎 : ${runtime(process.uptime())}
+║🤖𝙱𝚘𝚝 : ${global.BotName}
+║💬𝙾𝚠𝚗𝚎𝚛 : 🦄Dream Guy Deepak
+║💡𝙼𝚘𝚍𝚎 : Public
+║🖥️𝙷𝚘𝚜𝚝 𝙽𝚊𝚖𝚎 : localhost
+║📱𝙿𝚕𝚊𝚝𝚏𝚘𝚛𝚖 : android
+║👤𝚃𝚘𝚝𝚊𝚕 𝚄𝚜𝚎𝚛 : ${Object.keys(global.db.data.users).length}
+╚═════════════════❀  
+╔═══❑𝗨𝗦𝗘𝗥-𝗜𝗡𝗙𝗢❑════❀
+║🙇𝙽𝚊𝚖𝚎 : ${pushname}
+║📠𝙽𝚞𝚖𝚋𝚎𝚛 : @${me.split('@')[0]}
+╚══════════════❀
+╔═══❑𝗧𝗜𝗠𝗘-𝗜𝗡𝗙𝗢❑════❀
+║⌚𝚃𝚒𝚖𝚎 : ${deepaktime}
+║🗓️𝙳𝚊𝚝𝚎 : ${deepakdate} 
+╚═════════════════❀ 
+𝑴𝒂𝒅𝒆 𝑩𝒚 𝑫𝒓𝒆𝒂𝒎 𝑮𝒖𝒚 𝑫𝒆𝒆𝒑𝒂𝒌❤
 
-ꪶ🐕Group🐕ꫂ
-➙ ${prefix}add
-➙ ${prefix}remove
-➙ ${prefix}tagall
-➙ ${prefix}promote
-➙ ${prefix}demote
-➙ ${prefix}revoke
-➙ ${prefix}hidetag
-➙ ${prefix}groupsetting 
-➙ ${prefix}grouplink
-➙ ${prefix}setgcpp
-➙ ${prefix}setname
-➙ ${prefix}setdesc
-➙ ${prefix}group
-➙ ${prefix}nsfw
-➙ ${prefix}nsnfwmenu
+╔════════════════❀
+║Hi😇 ${pushname}
+║${ucapanWaktu}️
+╚════════════════❀
 
-ꪶ🐕Anti Link🐕ꫂ
-➙ ${prefix}antilinkgc
-➙ ${prefix}antilinktg
-➙ ${prefix}antilinktt
-➙ ${prefix}antilinkytch
-➙ ${prefix}antilinkytvid
-➙ ${prefix}antilinkig
-➙ ${prefix}antilinkfb
-➙ ${prefix}antilinktwit
-➙ ${prefix}antilinkall
-➙ ${prefix}antiwame
+╔══ꪶOwnerꫂ═══❀
+║➙ ${prefix}private
+║➙ ${prefix}public
+║➙ ${prefix}join
+║➙ ${prefix}bangroup
+║➙ ${prefix}ban
+║➙ ${prefix}block 
+║➙ ${prefix}unblock
+║➙ ${prefix}broadcast
+║➙ ${prefix}bye
+╚═════════════════❀
 
-ꪶ🐕Main🐕ꫂ
-➙ ${prefix}say (tts)
-➙ ${prefix}alive
-➙ ${prefix}stalk
-➙ ${prefix}profile
-➙ ${prefix}delete
-➙ ${prefix}deleteall
-➙ ${prefix}listgc
-➙ ${prefix}listpc
-➙ ${prefix}welcome
-➙ ${prefix}support
-➙ ${prefix}repo
-➙ ${prefix}script
-➙ ${prefix}menu
-➙ ${prefix}stalk
+╔══ꪶGroupꫂ═══❀
+║➙ ${prefix}add
+║➙ ${prefix}remove
+║➙ ${prefix}tagall
+║➙ ${prefix}promote
+║➙ ${prefix}demote
+║➙ ${prefix}revoke
+║➙ ${prefix}hidetag
+║➙ ${prefix}groupsetting 
+║➙ ${prefix}grouplink
+║➙ ${prefix}setgcpp
+║➙ ${prefix}setname
+║➙ ${prefix}setdesc
+║➙ ${prefix}group
+║➙ ${prefix}nsfw
+║➙ ${prefix}nsnfwmenu
+╚═════════════════❀
 
-🐕Game🐕ꫂ
-➙ ${prefix}truth
-➙ ${prefix}dare
-➙ ${prefix}slot
-➙ ${prefix}spin
-➙ ${prefix}tictactoe
-➙ ${prefix}ttt
-➙ ${prefix}lottery
-➙ ${prefix}gamble
+╔══ꪶAnti Linkꫂ═══❀
+║➙ ${prefix}antilinkgc
+║➙ ${prefix}antilinktg
+║➙ ${prefix}antilinktt
+║➙ ${prefix}antilinkytch
+║➙ ${prefix}antilinkytvid
+║➙ ${prefix}antilinkig
+║➙ ${prefix}antilinkfb
+║➙ ${prefix}antilinktwit
+║➙ ${prefix}antilinkall
+║➙ ${prefix}antiwame
+╚═════════════════❀
 
-ꪶ🐕Wallet🐕ꫂ
-➙ ${prefix}daily
-➙ ${prefix}bank
-➙ ${prefix}wallet
-➙ ${prefix}bankupgrade
-➙ ${prefix}deposit
-➙ ${prefix}withdraw
-➙ ${prefix}attack
-➙ ${prefix}rob
-➙ ${prefix}transfer
-➙ ${prefix}wealth
-➙ ${prefix}give
-➙ ${prefix}ritual
+╔══ꪶMainꫂ═══❀
+║➙ ${prefix}say (tts)
+║➙ ${prefix}alive
+║➙ ${prefix}stalk
+║➙ ${prefix}profile
+║➙ ${prefix}delete
+║➙ ${prefix}deleteall
+║➙ ${prefix}listgc
+║➙ ${prefix}listpc
+║➙ ${prefix}welcome
+║➙ ${prefix}support
+║➙ ${prefix}repo
+║➙ ${prefix}script
+║➙ ${prefix}menu
+║➙ ${prefix}stalk
+╚═════════════════❀
 
-ꪶ🐕Search🐕ꫂ
-➙ ${prefix}play
-➙ ${prefix}ytmp3
-➙ ${prefix}ytmp4 
-➙ ${prefix}yts
-➙ ${prefix}lyrics
-➙ ${prefix}movie
-➙ ${prefix}google
-➙ ${prefix}gimage
-➙ ${prefix}pinterest
-➙ ${prefix}image
-➙ ${prefix}wallpaper
-➙ ${prefix}searchgc
-➙ ${prefix}happymod
-➙ ${prefix}wikimedia
-➙ ${prefix}ringtone
-➙ ${prefix}anime
-➙ ${prefix}animestory
-➙ ${prefix}manga
-➙ ${prefix}ringtone
+╔══ꪶGameꫂ═══❀
+║➙ ${prefix}truth
+║➙ ${prefix}dare
+║➙ ${prefix}slot
+║➙ ${prefix}spin
+║➙ ${prefix}tictactoe
+║➙ ${prefix}ttt
+║➙ ${prefix}lottery
+║➙ ${prefix}gamble
+╚═════════════════❀
 
-ꪶ🐕Convert🐕ꫂ
-➙ ${prefix}sticker
-➙ ${prefix}toimg
-➙ ${prefix}tovideo
-➙ ${prefix}togif
-➙ ${prefix}take
-➙ ${prefix}stickermeme
-➙ ${prefix}emojimix
-➙ ${prefix}tourl
-➙ ${prefix}tomp3
-➙ ${prefix}toaudio
+╔══ꪶWalletꫂ═══❀
+║➙ ${prefix}daily
+║➙ ${prefix}bank
+║➙ ${prefix}wallet
+║➙ ${prefix}bankupgrade
+║➙ ${prefix}deposit
+║➙ ${prefix}withdraw
+║➙ ${prefix}attack
+║➙ ${prefix}rob
+║➙ ${prefix}transfer
+║➙ ${prefix}wealth
+║➙ ${prefix}give
+║➙ ${prefix}ritual
+╚═════════════════❀
 
-ꪶ🐕Audio Edit🐕ꫂ
-➙ ${prefix}bass
-➙ ${prefix}tempo
-➙ ${prefix}blown
-➙ ${prefix}robot
-➙ ${prefix}slow
-➙ ${prefix}squirrel
-➙ ${prefix}deep
-➙ ${prefix}earrape
-➙ ${prefix}fast
-➙ ${prefix}fat
-➙ ${prefix}nightcore
-➙ ${prefix}reverse
+╔══ꪶSearchꫂ═══❀
+║➙ ${prefix}play
+║➙ ${prefix}ytmp3
+║➙ ${prefix}ytmp4 
+║➙ ${prefix}yts
+║➙ ${prefix}lyrics
+║➙ ${prefix}movie
+║➙ ${prefix}google
+║➙ ${prefix}gimage
+║➙ ${prefix}pinterest
+║➙ ${prefix}image
+║➙ ${prefix}wallpaper
+║➙ ${prefix}searchgc
+║➙ ${prefix}happymod
+║➙ ${prefix}wikimedia
+║➙ ${prefix}ringtone
+║➙ ${prefix}anime
+║➙ ${prefix}animestory
+║➙ ${prefix}manga
+║➙ ${prefix}ringtone
+╚═════════════════❀
 
-ꪶ🐕Reactions🐕ꫂ
-➙ ${prefix}cuddle
-➙ ${prefix}hug
-➙ ${prefix}kiss 
-➙ ${prefix}bonk
-➙ ${prefix}cry
-➙ ${prefix}bully
-➙ ${prefix}slap
-➙ ${prefix}kill
-➙ ${prefix}happy
-➙ ${prefix}lick
-➙ ${prefix}pat
-➙ ${prefix}smug
-➙ ${prefix}nom
-➙ ${prefix}glomp
-➙ ${prefix}bite
-➙ ${prefix}yeet
-➙ ${prefix}blush
-➙ ${prefix}smile
-➙ ${prefix}wave
-➙ ${prefix}highfive
-➙ ${prefix}handhold
-➙ ${prefix}wink
-➙ ${prefix}poke
-➙ ${prefix}dance
-➙ ${prefix}cringe
+╔══ꪶConvertꫂ═══❀
+║➙ ${prefix}sticker
+║➙ ${prefix}toimg
+║➙ ${prefix}tovideo
+║➙ ${prefix}togif
+║➙ ${prefix}take
+║➙ ${prefix}stickermeme
+║➙ ${prefix}emojimix
+║➙ ${prefix}tourl
+║➙ ${prefix}tomp3
+║➙ ${prefix}toaudio
+╚═════════════════❀
 
-ꪶ🐕Downloader🐕ꫂ
-➙ ${prefix}ytvideo
-➙ ${prefix}mediafire
-➙ ${prefix}instagram
-➙ ${prefix}igtv
-➙ ${prefix}facebook
-➙ ${prefix}fbmp3
-➙ ${prefix}twitter
-➙ ${prefix}twittermp3
-➙ ${prefix}tiktok
-➙ ${prefix}tiktokaudio
-➙ ${prefix}tiktoknowm
-➙ ${prefix}mediafire  
+╔══ꪶAudio Editꫂ═══❀
+║➙ ${prefix}bass
+║➙ ${prefix}tempo
+║➙ ${prefix}blown
+║➙ ${prefix}robot
+║➙ ${prefix}slow
+║➙ ${prefix}squirrel
+║➙ ${prefix}deep
+║➙ ${prefix}earrape
+║➙ ${prefix}fast
+║➙ ${prefix}fat
+║➙ ${prefix}nightcore
+║➙ ${prefix}reverse
+╚═════════════════❀
 
-ꪶ🐕Fun🐕ꫂ
-➙ ${prefix}reaction
-➙ ${prefix}couple
-➙ ${prefix}soulmate
-➙ ${prefix}handsomecheck
-➙ ${prefix}beautifulcheck
-➙ ${prefix}awesomecheck
-➙ ${prefix}greatcheck
-➙ ${prefix}gaycheck
-➙ ${prefix}cutecheck
-➙ ${prefix}uglycheck
-➙ ${prefix}charactercheck
-➙ ${prefix}lesbiancheck
-➙ ${prefix}hornycheck
-➙ ${prefix}prettycheck
-➙ ${prefix}lovelycheck
-➙ ${prefix}stupid
-➙ ${prefix}foolish
-➙ ${prefix}smart
-➙ ${prefix}idiot
-➙ ${prefix}gay
-➙ ${prefix}lesbi
-➙ ${prefix}bastard
-➙ ${prefix}stubble
-➙ ${prefix}dog
-➙ ${prefix}fuck
-➙ ${prefix}ape
-➙ ${prefix}noob
-➙ ${prefix}great
-➙ ${prefix}horny
-➙ ${prefix}wibu
-➙ ${prefix}asshole
-➙ ${prefix}handsome
-➙ ${prefix}beautiful
-➙ ${prefix}cute
-➙ ${prefix}kind
-➙ ${prefix}ugly
-➙ ${prefix}pretty
-➙ ${prefix}lesbian
-➙ ${prefix}randi
-➙ ${prefix}gandu
-➙ ${prefix}madarchod
-➙ ${prefix}kala
-➙ ${prefix}gora
-➙ ${prefix}chutiya
-➙ ${prefix}nibba
-➙ ${prefix}nibbi
-➙ ${prefix}bhosdiwala
-➙ ${prefix}chutmarika
-➙ ${prefix}bokachoda
-➙ ${prefix}suarerbaccha
-➙ ${prefix}bolochoda
-➙ ${prefix}muthal
-➙ ${prefix}muthbaaz
-➙ ${prefix}randibaaz
-➙ ${prefix}topibaaz
-➙ ${prefix}cunt
-➙ ${prefix}nerd
-➙ ${prefix}behenchod
-➙ ${prefix}behnchoda
-➙ ${prefix}bhosdika
-➙ ${prefix}nerd
-➙ ${prefix}mc
-➙ ${prefix}bsdk
-➙ ${prefix}bhosdk
-➙ ${prefix}nigger
-➙ ${prefix}loda
-➙ ${prefix}laund
-➙ ${prefix}nigga
-➙ ${prefix}noobra
-➙ ${prefix}tharki
-➙ ${prefix}nibba
-➙ ${prefix}nibbi
-➙ ${prefix}mumu
-➙ ${prefix}rascal
-➙ ${prefix}scumbag
-➙ ${prefix}nuts
-➙ ${prefix}comrade
-➙ ${prefix}fagot
-➙ ${prefix}scoundrel
-➙ ${prefix}ditch
-➙ ${prefix}dope
-➙ ${prefix}gucci
-➙ ${prefix}lit
-➙ ${prefix}dumbass
-➙ ${prefix}sexy
-➙ ${prefix}crackhead
-➙ ${prefix}mf
-➙ ${prefix}motherfucker
-➙ ${prefix}dogla
-➙ ${prefix}bewda
-➙ ${prefix}boka
-➙ ${prefix}khanki
-➙ ${prefix}bal
-➙ ${prefix}sucker
-➙ ${prefix}fuckboy
-➙ ${prefix}playboy
-➙ ${prefix}fuckgirl
-➙ ${prefix}playgirl
-➙ ${prefix}hot
+╔══ꪶReactionsꫂ═══❀
+║➙ ${prefix}cuddle
+║➙ ${prefix}hug
+║➙ ${prefix}kiss 
+║➙ ${prefix}bonk
+║➙ ${prefix}cry
+║➙ ${prefix}bully
+║➙ ${prefix}slap
+║➙ ${prefix}kill
+║➙ ${prefix}happy
+║➙ ${prefix}lick
+║➙ ${prefix}pat
+║➙ ${prefix}smug
+║➙ ${prefix}nom
+║➙ ${prefix}glomp
+║➙ ${prefix}bite
+║➙ ${prefix}yeet
+║➙ ${prefix}blush
+║➙ ${prefix}smile
+║➙ ${prefix}wave
+║➙ ${prefix}highfive
+║➙ ${prefix}handhold
+║➙ ${prefix}wink
+║➙ ${prefix}poke
+║➙ ${prefix}dance
+║➙ ${prefix}cringe
+╚═════════════════❀
 
-ꪶ🐕Anime🐕ꫂ
-➙ ${prefix}crosplay
-➙ ${prefix}waifu
-➙ ${prefix}loli
-➙ ${prefix}tickle
-➙ ${prefix}wallpaper
-➙ ${prefix}coffee
-➙ ${prefix}neko
-➙ ${prefix}couplepp
-➙ ${prefix}feed
-➙ ${prefix}foxgirl
-➙ ${prefix}feed
-➙ ${prefix}meow
-➙ ${prefix}animenom
-➙ ${prefix}waifu3
-➙ ${prefix}neko2
-➙ ${prefix}feed
-➙ ${prefix}meow
-➙ ${prefix}tickle
-➙ ${prefix}migumin
-➙ ${prefix}awoo
-➙ ${prefix}animewallpaper2
-➙ ${prefix}anime
-➙ ${prefix}manga
+╔══ꪶDownloaderꫂ═══❀
+║➙ ${prefix}ytvideo
+║➙ ${prefix}mediafire
+║➙ ${prefix}instagram
+║➙ ${prefix}igtv
+║➙ ${prefix}facebook
+║➙ ${prefix}fbmp3
+║➙ ${prefix}twitter
+║➙ ${prefix}twittermp3
+║➙ ${prefix}tiktok
+║➙ ${prefix}tiktokaudio
+║➙ ${prefix}tiktoknowm
+║➙ ${prefix}mediafire  
+╚═════════════════❀
 
-ꪶ🐕Maker🐕ꫂ	
-➙${prefix}candy
-➙${prefix}8bit
-➙${prefix}horror
-➙${prefix}hoorror
-➙${prefix}retro
-➙${prefix}blackpinkneon
-➙${prefix}deepsea
-➙${prefix}scifi
-➙${prefix}fiction
-➙${prefix}berry
-➙${prefix}fruitjuice
-➙${prefix}biscuit
-➙${prefix}wood
-➙${prefix}chocolate
-➙${prefix}matrix
-➙${prefix}blood
-➙${prefix}halloween
-➙${prefix}wicker
-➙${prefix}darkgold
-➙${prefix}firework
-➙${prefix}skeleton
-➙${prefix}sand
-➙${prefix}glue
-➙${prefix}leaves
-➙${prefix}magma
-➙${prefix}lava
-➙${prefix}rockart
-➙${prefix}bloodglas
-➙${prefix}underwater
-➙${prefix}textmaker
-➙${prefix}honey
-➙${prefix}ice
-➙${prefix}watercolor
-➙${prefix}multicolor
-➙${prefix}snow
-➙${prefix}harrypot
-➙${prefix}harrypotter
-➙${prefix}brokenglass
-➙${prefix}waterpipe
-➙${prefix}spooky
-➙${prefix}circuit
-➙${prefix}metallic
-➙${prefix}demon
-➙${prefix}sparklechristmas
-➙${prefix}christmas
-➙${prefix}3dchristmas
-➙${prefix}3dbox
-➙${prefix}waterdrop
-➙${prefix}lion2
-➙${prefix}papercut
-➙${prefix}transformer
-➙${prefix}neondevil
-➙${prefix}3davengers
-➙${prefix}3dstone
-➙${prefix}3dstone2
-➙${prefix}summertime
-➙${prefix}thunder
-➙${prefix}window
-➙${prefix}graffiti
-➙${prefix}graffitibike
-➙${prefix}pornhub
-➙${prefix}glitch
-➙${prefix}blackpinkart
-➙${prefix}glitch2
-➙${prefix}glitch3
-➙${prefix}3dspace
-➙${prefix}lion
-➙${prefix}3dneon
-➙${prefix}greenneon
-➙${prefix}bokeh
-➙${prefix}holographic
-➙${prefix}bear
-➙${prefix}wolf
-➙${prefix}joker
-➙${prefix}dropwater
-➙${prefix}dropwater2
-➙${prefix}thewall
-➙${prefix}neonlight
-➙${prefix}natural
-➙${prefix}carbon
-➙${prefix}pencil
-➙${prefix}blackpink2
-➙${prefix}neon
-➙${prefix}neonlight2
-➙${prefix}toxic
-➙${prefix}strawberry
-➙${prefix}discovery
-➙${prefix}1917
-➙ ${prefix}sci_fi
-➙ ${prefix}ancient
-➙ ${prefix}fabric
-➙ ${prefix}hoorror
-➙ ${prefix}whitebear
-➙ ${prefix}juice
-➙ ${prefix}batman
-➙ ${prefix}multicolor
-➙ ${prefix}wonderful
-➙ ${prefix}sketch
-➙ ${prefix}marvel
-➙ ${prefix}foggy
-➙ ${prefix}writing
-➙ ${prefix}halloweenfire
-➙ ${prefix}halloween
-➙ ${prefix}watercolor
-➙ ${prefix}classic
+╔══ꪶFunꫂ═══❀
+║➙ ${prefix}reaction
+║➙ ${prefix}couple
+║➙ ${prefix}soulmate
+║➙ ${prefix}handsomecheck
+║➙ ${prefix}beautifulcheck
+║➙ ${prefix}awesomecheck
+║➙ ${prefix}greatcheck
+║➙ ${prefix}gaycheck
+║➙ ${prefix}cutecheck
+║➙ ${prefix}uglycheck
+║➙ ${prefix}charactercheck
+║➙ ${prefix}lesbiancheck
+║➙ ${prefix}hornycheck
+║➙ ${prefix}prettycheck
+║➙ ${prefix}lovelycheck
+║➙ ${prefix}stupid
+║➙ ${prefix}foolish
+║➙ ${prefix}smart
+║➙ ${prefix}idiot
+║➙ ${prefix}gay
+║➙ ${prefix}lesbi
+║➙ ${prefix}bastard
+║➙ ${prefix}stubble
+║➙ ${prefix}dog
+║➙ ${prefix}fuck
+║➙ ${prefix}ape
+║➙ ${prefix}noob
+║➙ ${prefix}great
+║➙ ${prefix}horny
+║➙ ${prefix}wibu
+║➙ ${prefix}asshole
+║➙ ${prefix}handsome
+║➙ ${prefix}beautiful
+║➙ ${prefix}cute
+║➙ ${prefix}kind
+║➙ ${prefix}ugly
+║➙ ${prefix}pretty
+║➙ ${prefix}lesbian
+║➙ ${prefix}randi
+║➙ ${prefix}gandu
+║➙ ${prefix}madarchod
+║➙ ${prefix}kala
+║➙ ${prefix}gora
+║➙ ${prefix}chutiya
+║➙ ${prefix}nibba
+║➙ ${prefix}nibbi
+║➙ ${prefix}bhosdiwala
+║➙ ${prefix}chutmarika
+║➙ ${prefix}bokachoda
+║➙ ${prefix}suarerbaccha
+║➙ ${prefix}bolochoda
+║➙ ${prefix}muthal
+║➙ ${prefix}muthbaaz
+║➙ ${prefix}randibaaz
+║➙ ${prefix}topibaaz
+║➙ ${prefix}cunt
+║➙ ${prefix}nerd
+║➙ ${prefix}behenchod
+║➙ ${prefix}behnchoda
+║➙ ${prefix}bhosdika
+║➙ ${prefix}nerd
+║➙ ${prefix}mc
+║➙ ${prefix}bsdk
+║➙ ${prefix}bhosdk
+║➙ ${prefix}nigger
+║➙ ${prefix}loda
+║➙ ${prefix}laund
+║➙ ${prefix}nigga
+║➙ ${prefix}noobra
+║➙ ${prefix}tharki
+║➙ ${prefix}nibba
+║➙ ${prefix}nibbi
+║➙ ${prefix}mumu
+║➙ ${prefix}rascal
+║➙ ${prefix}scumbag
+║➙ ${prefix}nuts
+║➙ ${prefix}comrade
+║➙ ${prefix}fagot
+║➙ ${prefix}scoundrel
+║➙ ${prefix}ditch
+║➙ ${prefix}dope
+║➙ ${prefix}gucci
+║➙ ${prefix}lit
+║➙ ${prefix}dumbass
+║➙ ${prefix}sexy
+║➙ ${prefix}crackhead
+║➙ ${prefix}mf
+║➙ ${prefix}motherfucker
+║➙ ${prefix}dogla
+║➙ ${prefix}bewda
+║➙ ${prefix}boka
+║➙ ${prefix}khanki
+║➙ ${prefix}bal
+║➙ ${prefix}sucker
+║➙ ${prefix}fuckboy
+║➙ ${prefix}playboy
+║➙ ${prefix}fuckgirl
+║➙ ${prefix}playgirl
+║➙ ${prefix}hot
+╚═════════════════❀
 
-ꪶ🐕Soundmenu🐕ꫂ
-➙ ${prefix}sound1
-➙ ${prefix}sound2
-➙ ${prefix}sound3
-➙ ${prefix}sound4
-➙ ${prefix}sound5
-➙ ${prefix}sound6
-➙ ${prefix}sound7
-➙ ${prefix}sound8
-➙ ${prefix}sound9
-➙ ${prefix}sound10
-➙ ${prefix}sound11
-➙ ${prefix}sound12
-➙ ${prefix}sound13
-➙ ${prefix}sound14
-➙ ${prefix}sound15
-➙ ${prefix}sound16
-➙ ${prefix}sound17
-➙ ${prefix}sound18
-➙ ${prefix}sound19
-➙ ${prefix}sound20
-➙ ${prefix}sound21
-➙ ${prefix}sound22
-➙ ${prefix}sound23
-➙ ${prefix}sound24
-➙ ${prefix}sound25
-➙ ${prefix}sound26
-➙ ${prefix}sound27
-➙ ${prefix}sound28
-➙ ${prefix}sound29
-➙ ${prefix}sound30
-➙ ${prefix}sound31
-➙ ${prefix}sound32
-➙ ${prefix}sound33
-➙ ${prefix}sound34
-➙ ${prefix}sound35
-➙ ${prefix}sound36
-➙ ${prefix}sound37
-➙ ${prefix}sound38
-➙ ${prefix}sound39
-➙ ${prefix}sound40
-➙ ${prefix}sound41
-➙ ${prefix}sound42
-➙ ${prefix}sound43
-➙ ${prefix}sound44
-➙ ${prefix}sound45
-➙ ${prefix}sound46
-➙ ${prefix}sound47
-➙ ${prefix}sound48
-➙ ${prefix}sound49
-➙ ${prefix}sound50
-➙ ${prefix}sound51
-➙ ${prefix}sound52
-➙ ${prefix}sound53
-➙ ${prefix}sound54
-➙ ${prefix}sound55
-➙ ${prefix}sound56
-➙ ${prefix}sound57
-➙ ${prefix}sound58
-➙ ${prefix}sound59
-➙ ${prefix}sound60
-➙ ${prefix}sound61
-➙ ${prefix}sound62
-➙ ${prefix}sound63
-➙ ${prefix}sound64
-➙ ${prefix}sound65
-➙ ${prefix}sound66
-➙ ${prefix}sound67
-➙ ${prefix}sound68
-➙ ${prefix}sound69
-➙ ${prefix}sound70
-➙ ${prefix}sound71
-➙ ${prefix}sound72
-➙ ${prefix}sound73
-➙ ${prefix}sound74
-➙ ${prefix}sound75
-➙ ${prefix}sound76
-➙ ${prefix}sound77
-➙ ${prefix}sound78
-➙ ${prefix}sound79
-➙ ${prefix}sound80
-➙ ${prefix}sound81
-➙ ${prefix}sound82
-➙ ${prefix}sound83
-➙ ${prefix}sound84
-➙ ${prefix}sound85
-➙ ${prefix}sound86
-➙ ${prefix}sound87
-➙ ${prefix}sound88
-➙ ${prefix}sound89
-➙ ${prefix}sound90
-➙ ${prefix}sound91
-➙ ${prefix}sound92
-➙ ${prefix}sound93
-➙ ${prefix}sound94
-➙ ${prefix}sound95
-➙ ${prefix}sound96
-➙ ${prefix}sound97
-➙ ${prefix}sound98
-➙ ${prefix}sound99
-➙ ${prefix}sound100
-➙ ${prefix}sound101
-➙ ${prefix}sound102
-➙ ${prefix}sound103
-➙ ${prefix}sound104
-➙ ${prefix}sound105
-➙ ${prefix}sound106
-➙ ${prefix}sound107
-➙ ${prefix}sound108
-➙ ${prefix}sound109
-➙ ${prefix}sound110
-➙ ${prefix}sound111
-➙ ${prefix}sound112
-➙ ${prefix}sound113
-➙ ${prefix}sound114
-➙ ${prefix}sound115
-➙ ${prefix}sound116
-➙ ${prefix}sound117
-➙ ${prefix}sound118
-➙ ${prefix}sound119
-➙ ${prefix}sound120
-➙ ${prefix}sound121
-➙ ${prefix}sound122
-➙ ${prefix}sound123
-➙ ${prefix}sound124
-➙ ${prefix}sound125
-➙ ${prefix}sound126
-➙ ${prefix}sound127
-➙ ${prefix}sound128
-➙ ${prefix}sound129
-➙ ${prefix}sound130
-➙ ${prefix}sound131
-➙ ${prefix}sound132
-➙ ${prefix}sound133
-➙ ${prefix}sound134
-➙ ${prefix}sound135
-➙ ${prefix}sound136
-➙ ${prefix}sound137
-➙ ${prefix}sound138
-➙ ${prefix}sound139
-➙ ${prefix}sound140
-➙ ${prefix}sound141
-➙ ${prefix}sound142
-➙ ${prefix}sound143
-➙ ${prefix}sound144
-➙ ${prefix}sound145
-➙ ${prefix}sound146
-➙ ${prefix}sound147
-➙ ${prefix}sound148
-➙ ${prefix}sound149
-➙ ${prefix}sound150
-➙ ${prefix}sound151
-➙ ${prefix}sound152
-➙ ${prefix}sound153
-➙ ${prefix}sound154
-➙ ${prefix}sound155
-➙ ${prefix}sound156
-➙ ${prefix}sound157
-➙ ${prefix}sound158
-➙ ${prefix}sound159
-➙ ${prefix}sound160
-➙ ${prefix}sound161
+╔══ꪶAnimeꫂ═══❀
+║➙ ${prefix}crosplay
+║➙ ${prefix}waifu
+║➙ ${prefix}loli
+║➙ ${prefix}tickle
+║➙ ${prefix}wallpaper
+║➙ ${prefix}coffee
+║➙ ${prefix}neko
+║➙ ${prefix}couplepp
+║➙ ${prefix}feed
+║➙ ${prefix}foxgirl
+║➙ ${prefix}feed
+║➙ ${prefix}meow
+║➙ ${prefix}animenom
+║➙ ${prefix}waifu3
+║➙ ${prefix}neko2
+║➙ ${prefix}feed
+║➙ ${prefix}meow
+║➙ ${prefix}tickle
+║➙ ${prefix}migumin
+║➙ ${prefix}awoo
+║➙ ${prefix}animewallpaper2
+║➙ ${prefix}anime
+║➙ ${prefix}manga
+╚═════════════════❀
 
-ꪶ🐕Informative🐕ꫂ
-➙ ${prefix}animequote
-➙ ${prefix}quote
-➙ ${prefix}weather
-➙ ${prefix}covid
-➙ ${prefix}earthquake
-➙ ${prefix}wiki
+╔══ꪶMakerꫂ═══❀	
+║➙${prefix}candy
+║➙${prefix}8bit
+║➙${prefix}horror
+║➙${prefix}hoorror
+║➙${prefix}retro
+║➙${prefix}blackpinkneon
+║➙${prefix}deepsea
+║➙${prefix}scifi
+║➙${prefix}fiction
+║➙${prefix}berry
+║➙${prefix}fruitjuice
+║➙${prefix}biscuit
+║➙${prefix}wood
+║➙${prefix}chocolate
+║➙${prefix}matrix
+║➙${prefix}blood
+║➙${prefix}halloween
+║➙${prefix}wicker
+║➙${prefix}darkgold
+║➙${prefix}firework
+║➙${prefix}skeleton
+║➙${prefix}sand
+║➙${prefix}glue
+║➙${prefix}leaves
+║➙${prefix}magma
+║➙${prefix}lava
+║➙${prefix}rockart
+║➙${prefix}bloodglas
+║➙${prefix}underwater
+║➙${prefix}textmaker
+║➙${prefix}honey
+║➙${prefix}ice
+║➙${prefix}watercolor
+║➙${prefix}multicolor
+║➙${prefix}snow
+║➙${prefix}harrypot
+║➙${prefix}harrypotter
+║➙${prefix}brokenglass
+║➙${prefix}waterpipe
+║➙${prefix}spooky
+║➙${prefix}circuit
+║➙${prefix}metallic
+║➙${prefix}demon
+║➙${prefix}sparklechristmas
+║➙${prefix}christmas
+║➙${prefix}3dchristmas
+║➙${prefix}3dbox
+║➙${prefix}waterdrop
+║➙${prefix}lion2
+║➙${prefix}papercut
+║➙${prefix}transformer
+║➙${prefix}neondevil
+║➙${prefix}3davengers
+║➙${prefix}3dstone
+║➙${prefix}3dstone2
+║➙${prefix}summertime
+║➙${prefix}thunder
+║➙${prefix}window
+║➙${prefix}graffiti
+║➙${prefix}graffitibike
+║➙${prefix}pornhub
+║➙${prefix}glitch
+║➙${prefix}blackpinkart
+║➙${prefix}glitch2
+║➙${prefix}glitch3
+║➙${prefix}3dspace
+║➙${prefix}lion
+║➙${prefix}3dneon
+║➙${prefix}greenneon
+║➙${prefix}bokeh
+║➙${prefix}holographic
+║➙${prefix}bear
+║➙${prefix}wolf
+║➙${prefix}joker
+║➙${prefix}dropwater
+║➙${prefix}dropwater2
+║➙${prefix}thewall
+║➙${prefix}neonlight
+║➙${prefix}natural
+║➙${prefix}carbon
+║➙${prefix}pencil
+║➙${prefix}blackpink2
+║➙${prefix}neon
+║➙${prefix}neonlight2
+║➙${prefix}toxic
+║➙${prefix}strawberry
+║➙${prefix}discovery
+║➙${prefix}1917
+║➙ ${prefix}sci_fi
+║➙ ${prefix}ancient
+║➙ ${prefix}fabric
+║➙ ${prefix}hoorror
+║➙ ${prefix}whitebear
+║➙ ${prefix}juice
+║➙ ${prefix}batman
+║➙ ${prefix}multicolor
+║➙ ${prefix}wonderful
+║➙ ${prefix}sketch
+║➙ ${prefix}marvel
+║➙ ${prefix}foggy
+║➙ ${prefix}writing
+║➙ ${prefix}halloweenfire
+║➙ ${prefix}halloween
+║➙ ${prefix}watercolor
+║➙ ${prefix}classic
+╚═════════════════❀
 
-ꪶ🐕Essential🐕ꫂ
-➙ ${prefix}qr
-➙ ${prefix}say
-➙ ${prefix}translate 
-➙ ${prefix}fliptext
-➙ ${prefix}toletter
+╔══ꪶSoundmenuꫂ═══❀
+║➙ ${prefix}sound1
+║➙ ${prefix}sound2
+║➙ ${prefix}sound3
+║➙ ${prefix}sound4
+║➙ ${prefix}sound5
+║➙ ${prefix}sound6
+║➙ ${prefix}sound7
+║➙ ${prefix}sound8
+║➙ ${prefix}sound9
+║➙ ${prefix}sound10
+║➙ ${prefix}sound11
+║➙ ${prefix}sound12
+║➙ ${prefix}sound13
+║➙ ${prefix}sound14
+║➙ ${prefix}sound15
+║➙ ${prefix}sound16
+║➙ ${prefix}sound17
+║➙ ${prefix}sound18
+║➙ ${prefix}sound19
+║➙ ${prefix}sound20
+║➙ ${prefix}sound21
+║➙ ${prefix}sound22
+║➙ ${prefix}sound23
+║➙ ${prefix}sound24
+║➙ ${prefix}sound25
+║➙ ${prefix}sound26
+║➙ ${prefix}sound27
+║➙ ${prefix}sound28
+║➙ ${prefix}sound29
+║➙ ${prefix}sound30
+║➙ ${prefix}sound31
+║➙ ${prefix}sound32
+║➙ ${prefix}sound33
+║➙ ${prefix}sound34
+║➙ ${prefix}sound35
+║➙ ${prefix}sound36
+║➙ ${prefix}sound37
+║➙ ${prefix}sound38
+║➙ ${prefix}sound39
+║➙ ${prefix}sound40
+║➙ ${prefix}sound41
+║➙ ${prefix}sound42
+║➙ ${prefix}sound43
+║➙ ${prefix}sound44
+║➙ ${prefix}sound45
+║➙ ${prefix}sound46
+║➙ ${prefix}sound47
+║➙ ${prefix}sound48
+║➙ ${prefix}sound49
+║➙ ${prefix}sound50
+║➙ ${prefix}sound51
+║➙ ${prefix}sound52
+║➙ ${prefix}sound53
+║➙ ${prefix}sound54
+║➙ ${prefix}sound55
+║➙ ${prefix}sound56
+║➙ ${prefix}sound57
+║➙ ${prefix}sound58
+║➙ ${prefix}sound59
+║➙ ${prefix}sound60
+║➙ ${prefix}sound61
+║➙ ${prefix}sound62
+║➙ ${prefix}sound63
+║➙ ${prefix}sound64
+║➙ ${prefix}sound65
+║➙ ${prefix}sound66
+║➙ ${prefix}sound67
+║➙ ${prefix}sound68
+║➙ ${prefix}sound69
+║➙ ${prefix}sound70
+║➙ ${prefix}sound71
+║➙ ${prefix}sound72
+║➙ ${prefix}sound73
+║➙ ${prefix}sound74
+║➙ ${prefix}sound75
+║➙ ${prefix}sound76
+║➙ ${prefix}sound77
+║➙ ${prefix}sound78
+║➙ ${prefix}sound79
+║➙ ${prefix}sound80
+║➙ ${prefix}sound81
+║➙ ${prefix}sound82
+║➙ ${prefix}sound83
+║➙ ${prefix}sound84
+║➙ ${prefix}sound85
+║➙ ${prefix}sound86
+║➙ ${prefix}sound87
+║➙ ${prefix}sound88
+║➙ ${prefix}sound89
+║➙ ${prefix}sound90
+║➙ ${prefix}sound91
+║➙ ${prefix}sound92
+║➙ ${prefix}sound93
+║➙ ${prefix}sound94
+║➙ ${prefix}sound95
+║➙ ${prefix}sound96
+║➙ ${prefix}sound97
+║➙ ${prefix}sound98
+║➙ ${prefix}sound99
+║➙ ${prefix}sound100
+║➙ ${prefix}sound101
+║➙ ${prefix}sound102
+║➙ ${prefix}sound103
+║➙ ${prefix}sound104
+║➙ ${prefix}sound105
+║➙ ${prefix}sound106
+║➙ ${prefix}sound107
+║➙ ${prefix}sound108
+║➙ ${prefix}sound109
+║➙ ${prefix}sound110
+║➙ ${prefix}sound111
+║➙ ${prefix}sound112
+║➙ ${prefix}sound113
+║➙ ${prefix}sound114
+║➙ ${prefix}sound115
+║➙ ${prefix}sound116
+║➙ ${prefix}sound117
+║➙ ${prefix}sound118
+║➙ ${prefix}sound119
+║➙ ${prefix}sound120
+║➙ ${prefix}sound121
+║➙ ${prefix}sound122
+║➙ ${prefix}sound123
+║➙ ${prefix}sound124
+║➙ ${prefix}sound125
+║➙ ${prefix}sound126
+║➙ ${prefix}sound127
+║➙ ${prefix}sound128
+║➙ ${prefix}sound129
+║➙ ${prefix}sound130
+║➙ ${prefix}sound131
+║➙ ${prefix}sound132
+║➙ ${prefix}sound133
+║➙ ${prefix}sound134
+║➙ ${prefix}sound135
+║➙ ${prefix}sound136
+║➙ ${prefix}sound137
+║➙ ${prefix}sound138
+║➙ ${prefix}sound139
+║➙ ${prefix}sound140
+║➙ ${prefix}sound141
+║➙ ${prefix}sound142
+║➙ ${prefix}sound143
+║➙ ${prefix}sound144
+║➙ ${prefix}sound145
+║➙ ${prefix}sound146
+║➙ ${prefix}sound147
+║➙ ${prefix}sound148
+║➙ ${prefix}sound149
+║➙ ${prefix}sound150
+║➙ ${prefix}sound151
+║➙ ${prefix}sound152
+║➙ ${prefix}sound153
+║➙ ${prefix}sound154
+║➙ ${prefix}sound155
+║➙ ${prefix}sound156
+║➙ ${prefix}sound157
+║➙ ${prefix}sound158
+║➙ ${prefix}sound159
+║➙ ${prefix}sound160
+║➙ ${prefix}sound161
+╚═════════════════❀
 
-ꪶ🐕NSFW🐕ꫂ
-➙ ${prefix}hentaivideo
-➙ ${prefix}blowjobgif
-➙ ${prefix}hneko
-➙ ${prefix}masturbation
-➙ ${prefix}thighs
-➙ ${prefix}pussy
-➙ ${prefix}panties
-➙ ${prefix}orgy
-➙ ${prefix}ahegao
-➙ ${prefix}ass
-➙ ${prefix}bdsm
-➙ ${prefix}blowjob
-➙ ${prefix}cuckold
-➙ ${prefix}ero
-➙ ${prefix}gasm
-➙ ${prefix}cum
-➙ ${prefix}femdom
-➙ ${prefix}foot
-➙ ${prefix}gangbang
-➙ ${prefix}glasses
-➙ ${prefix}jahy
-➙ ${prefix}trap
-➙ ${prefix}blowjobgif
-➙ ${prefix}spank
-➙ ${prefix}hneko
-➙ ${prefix}hwaifu
-➙ ${prefix}gasm
+╔══ꪶInformativeꫂ═══❀
+║➙ ${prefix}animequote
+║➙ ${prefix}quote
+║➙ ${prefix}weather
+║➙ ${prefix}covid
+║➙ ${prefix}earthquake
+║➙ ${prefix}wiki
+╚═════════════════❀
 
-ꪶ🐕Others🐕ꫂ
-➙ ${prefix}stickermeme
-➙ ${prefix}quotes
-➙ ${prefix}Report
-➙ ${prefix}darkjoke
-➙ ${prefix}afk
+╔══ꪶEssentialꫂ═══❀
+║➙ ${prefix}qr
+║➙ ${prefix}say
+║➙ ${prefix}translate 
+║➙ ${prefix}fliptext
+║➙ ${prefix}toletter
+╚═════════════════❀
 
-ꪶ🐕${global.BotName}🐕ꫂ 
-➙To use above command type
-➙ ${prefix}Command name 
-➙Support Group
-➙ ${prefix}support `
+╔══ꪶNSFWꫂ═══❀
+║➙ ${prefix}hentaivideo
+║➙ ${prefix}blowjobgif
+║➙ ${prefix}hneko
+║➙ ${prefix}masturbation
+║➙ ${prefix}thighs
+║➙ ${prefix}pussy
+║➙ ${prefix}panties
+║➙ ${prefix}orgy
+║➙ ${prefix}ahegao
+║➙ ${prefix}ass
+║➙ ${prefix}bdsm
+║➙ ${prefix}blowjob
+║➙ ${prefix}cuckold
+║➙ ${prefix}ero
+║➙ ${prefix}gasm
+║➙ ${prefix}cum
+║➙ ${prefix}femdom
+║➙ ${prefix}foot
+║➙ ${prefix}gangbang
+║➙ ${prefix}glasses
+║➙ ${prefix}jahy
+║➙ ${prefix}trap
+║➙ ${prefix}blowjobgif
+║➙ ${prefix}spank
+║➙ ${prefix}hneko
+║➙ ${prefix}hwaifu
+║➙ ${prefix}gasm
+╚═════════════════❀
+
+╔══ꪶOthersꫂ═══❀
+║➙ ${prefix}stickermeme
+║➙ ${prefix}quotes
+║➙ ${prefix}Report
+║➙ ${prefix}darkjoke
+║➙ ${prefix}afk
+╚═════════════════❀
+
+╔══ꪶ${global.BotName}ꫂ═══❀ 
+║➙To use above command type
+║➙ ${prefix}Command name 
+║➙Support Group
+║➙ ${prefix}support
+╚═════════════════❀ `
     
 
  let buttonshelpm = [
     {buttonId: `${prefix}owner`, buttonText: {displayText: '🦄Owner'}, type: 1}
     ]
                 let buttonMessage = {
-                    video:fs.readFileSync('./Assets/Deepak.mp4'),gifPlayback:true,
+                    image:fs.readFileSync("./Assets/Zenitsupic3.jpg"),
                     caption: helpmenu,
                     footer: `${BotName}`,
                     buttons: buttonshelpm,
