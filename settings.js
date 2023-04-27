@@ -13,7 +13,7 @@ global.antitags = true
 global.Owner = ['918348225320'] //ur number 
 global.OwnerNumber = ['918348225320']
 global.ownertag = ['918348225320']
-global.BotName = "ZenitsuBot-V2" //ur bot name 
+global.BotName = "Zenitsu-Bot" //ur bot name 
 global.packname = "ZenitsuBot" //ur sticker pack name
 global.author = "🦄Dream Guy Deepak" 
 global.OwnerName = "🦄Dream Guy Deepak" //ur name
@@ -22,7 +22,7 @@ global.SupportGroupLink = "https://chat.whatsapp.com/KguOo9XsRTW2iESYuHzVX1" //u
 global.sessionName = "session"
 
 // Prefix //
-global.prefa = ['.'] 
+global.prefa = ['#'] 
 
 
 global.location = "Darjeeling, India"
