@@ -11,6 +11,8 @@
   "termux",
   "whatsapp",
   "2021",
+  "2022",
+  "2023",
   "wabase-md",
   "base",
   "baileys-md",
@@ -103,10 +105,10 @@
  },
  "repository": {
   "type": "git",
-  "url": "git+https://github.com/DGDEEPAK/Zenitsu-Bot.git"
+  "url": "git+https://github.com/DGDEEPAK/Zenitsu-Bot2.git"
  },
  "bugs": {
-  "url": "https://github.com/DGDEEPAK/Zenitsu-Bot/issues"
+  "url": "https://github.com/DGDEEPAK/Zenitsu-Bot2/issues"
  },
- "homepage": "https://github.com/DGDEEPAK/Zenitsu-Bot#readme"
+ "homepage": "https://github.com/DGDEEPAK/Zenitsu-Bot2#readme"
 }
