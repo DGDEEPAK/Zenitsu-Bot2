@@ -5680,7 +5680,6 @@ const helpmenu = `
 ╚═════════════════❀
 
 ╔══ꪶGroupꫂ═══❀
-║➙ ${prefix}add
 ║➙ ${prefix}remove
 ║➙ ${prefix}tagall
 ║➙ ${prefix}promote
@@ -7375,16 +7374,7 @@ const Deepakarray= [
         
             Deepak.sendMessage(from,{video:{url:Deepakselection},gifPlayback:true,caption:txt},{quoted:m})
 		break
-
-case 'add':{     			
-    if (!m.isGroup) return replay(mess.grouponly)
- if (!isBotAdmins) return replay(mess.botadmin)
- let users = m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
- if (users.length == 0) return replay(`Please write the number of the person you want to add to thhis group`)
-  await Deepak.groupParticipantsUpdate(m.chat, [users], 'add').then((res) => replay(`User Added Successfully!`)).catch((err) => replay(`Cannot add that user to this group!`))
- }
- break
-		
+	
 case 'weather':
         if (isBan) return reply(mess.banned)
         if (!args[0]) return reply("Enter your location to search weather.")
