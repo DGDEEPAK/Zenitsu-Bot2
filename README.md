@@ -1,9 +1,7 @@
 
 
 <h1 align="center">ꪶZenitsu-Bot-V2ꫂ<br></h1>
-<p align="center">
-<img src="https://i.ibb.co/vXnjzpr/c"
-</p>
+<a href="https://ibb.co/7k1KVjd"><img src="https://i.ibb.co/7k1KVjd/Zenitsu.jpg" alt="Zenitsu" border="0"></a>
 
 <p align="center">
 Zenitsu-Bot-V2 Multi Device is a automated whatsapp bot developed by <a href="https://youtube.com/@dreamguydeepak" target="_blank">Deepak</a> using <a href="https://github.com/adiwajshing/Baileys" target="_blank">Baileys</a> and <a href="https://github.com/nodejs" target="_blank">Nodejs</a>. Dont forget to give a star bro.
