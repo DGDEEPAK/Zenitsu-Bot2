@@ -2,7 +2,7 @@
 
 <h1 align="center">ꪶZenitsu-Bot-V2ꫂ<br></h1>
 <p align="center">
-<img src="https://i.ibb.co/vXnjzpr/cheemspic.jpg"
+<img src="https://i.ibb.co/vXnjzpr/c"
 </p>
 
 <p align="center">
